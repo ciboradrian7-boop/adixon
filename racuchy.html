@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racuchy z jabłkami</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+      /* Fixed carousel image height with cover cropping so slider size is stable
+         Adjust the heights below as needed for your design. Uses object-fit so
+         images of different sizes keep the same visible area without stretching. */
+      .carousel-inner .carousel-item img {
+        width: 100%;
+        height: 420px; /* default height for desktop */
+        object-fit: cover; /* crop to fill while preserving aspect ratio */
+      }
+
+      /* Smaller screens: lower height to keep the carousel compact */
+      @media (max-width: 768px) {
+        .carousel-inner .carousel-item img {
+          height: 220px;
+        }
+      }
+
+      /* Very large screens: allow a taller hero */
+      @media (min-width: 1200px) {
+        .carousel-inner .carousel-item img {
+          height: 520px;
+        }
+      }
+      /* Review box background (custom color) */
+      .review-box {
+        background-color: #EFD7BC;
+      }
+      body{
+        background-color: #FCECD1;
+      }
+      /* Comments section styles */
+      .comments-header {
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .comment-card {
+        background-color: #F9E7D0; /* subtle box color */
+        border-radius: 0.6rem;
+        padding: 1rem;
+      }
+      .comment-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(0,0,0,0.08);
+        margin-right: 0.6rem;
+      }
+      .comment-stars .star { color: #ffc107; margin-left: 4px; }
+      .comment-stars .star.gray { color: #dcdcdc; }
+      /* Stars used for existing comments remain gold; gray class stays gray. */
+      .comment-card .star { color: #ffc107; margin-left: 4px; }
+      .comment-card .star.gray { color: #dcdcdc !important; }
+
+      /* Star buttons in the new-comment area: default to gray (unselected)
+         and become gold when selected. Use a specific .star-btn class so
+         other .btn-link styles (eg. nav-link color) aren't overridden. */
+      .comment-card .btn.btn-link.star-btn {
+        color: #dcdcdc; /* unselected */
+        margin-left: 4px;
+        cursor: pointer;
+      }
+      .comment-card .btn.btn-link.star-btn.selected {
+        color: #ffc107 !important; /* selected */
+      }
+      .comment-box-empty {
+        min-height: 90px;
+        background-color: #f7e6cf;
+        border-radius: 0.6rem;
+        padding: 1rem;
+      }
+      /* Constrain the width of the new-comment input so it's not too wide on large screens
+         and center it within the comments column. */
+      .comment-input {
+        max-width: 680px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (max-width: 767px) {
+        .comment-input { max-width: 100%; }
+      }
+      .login-prompt {
+        background-color: #F6E1C9;
+        border-radius: 0.6rem;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      /* Star rating hover effects */
+      .star-rating span { 
+        transition: all 0.3s ease;
+        cursor: pointer;
+        display: inline-block;
+      }
+      .star-rating span:hover {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+      }
+      
+      /* Recipe info badges */
+      .recipe-info {
+        display: inline-block;
+        padding: 0.4rem 0.8rem;
+        margin: 0.3rem;
+        background-color: rgba(139, 115, 85, 0.15);
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg py-2 py-md-3 shadow-sm mb-4 mb-md-5" style="background-color:  #FCECD1;">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold fs-4 fs-md-3 text-black d-flex align-items-center" href="Główna.html">
+      <img src="img/logo.png" alt="Logo" class="img-fluid d-inline-block align-text-top me-2" style="max-width:150px; height:auto;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav gap-4 align-items-center">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold fs-4 text-black py-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            PRZEPISY
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item fw-bold text-black" href="pierogi.html">1. Pierogi ruskie</a></li>
+            <li><a class="dropdown-item fw-bold text-black" href="zupa.html">2. Zupa pomidorowa</a></li>
+            <li><a class="dropdown-item fw-bold text-black" href="golabki.html">3. Gołąbki</a></li>
+            <li><a class="dropdown-item fw-bold text-black" href="racuchy.html">4. Racuchy</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold fs-4 text-black py-2" href="Główna.html#onas">O NAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold fs-4 text-black py-2" href="Główna.html#kontakt">KONTAKT</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold fs-4 text-black py-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            LOGOWANIE
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item fw-bold text-black" href="logowanie.html">ZALOGUJ SIĘ</a></li>
+            <li><a class="dropdown-item fw-bold text-black" href="rejestracja.html">ZAREJESTRUJ SIĘ</a></li>
+            <li><a class="dropdown-item fw-bold text-black" href="reset.html">RESETOWANIE HASŁA</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+<br>
+
+
+
+<!-- Centered Bootstrap carousel with 3 slides -->
+<div class="container mb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <!-- Replace the src attributes below with your actual image paths. Recommended image size: 1200x600 (adjust as needed) -->
+      <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner shadow-sm rounded">
+          <div class="carousel-item active">
+            <img src="img/racuchy/racuchy1.jpg" class="d-block w-100" alt="Slide 1 - replace with your image">
+          </div>
+          <div class="carousel-item">
+            <img src="img/racuchy/racuchy2.jpg" class="d-block w-100" alt="Slide 2 - replace with your image">
+          </div>
+          <div class="carousel-item">
+            <img src="img/racuchy/racuchy3.jpg" class="d-block w-100" alt="Slide 3 - replace with your image">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Keep Bootstrap JS include at the end of body -->
+<!-- Rating: 0 out of 5 stars (all gray) -->
+<div class="container mb-4">
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <div class="star-rating rating" aria-label="Ocena: 0 na 5" role="img">
+        <span class="text-secondary fs-1 me-1" aria-hidden="true">★</span>
+        <span class="text-secondary fs-1 me-1" aria-hidden="true">★</span>
+        <span class="text-secondary fs-1 me-1" aria-hidden="true">★</span>
+        <span class="text-secondary fs-1 me-1" aria-hidden="true">★</span>
+        <span class="text-secondary fs-1" aria-hidden="true">★</span>
+        <span class="visually-hidden">Ocena: 0 na 5</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recipe info badges -->
+<div class="container mb-3">
+  <div class="row">
+    <div class="col d-flex justify-content-center flex-wrap">
+      <span class="recipe-info">⏱️ Czas: 30 min</span>
+      <span class="recipe-info">👨‍🍳 Trudność: Łatwa</span>
+      <span class="recipe-info">🍽️ Porcje: 30 szt.</span>
+    </div>
+  </div>
+</div>
+
+  <!-- Review text box under rating -->
+  <div class="container-fluid mb-5">
+        <div class="row justify-content-center">
+                <div class="col-12 col-md-11 col-lg-10 col-xl-9">
+                    
+            <div class="review-box rounded p-4 text-center">
+                <h2 class="display-4 display-md-5 fw-bold mb-3 text-center fst-italic">4. Racuchy z jabłkami</h2>
+              <!-- Replace this text with the review or description you want to show -->
+              <p class="fs-5 text-secondary mb-4 text-center">
+        Słodka uczta – pulchne placuszki z jabłkami, podane z cukrem pudrem lub bitą śmietaną. Świetne na deser lub słodkie śniadanie.
+      </p>
+      <div class="w-100 my-3 px-0">
+        <hr class="mx-auto border-dark border-dashed opacity-75" style="width:96%; height: 2px; border-width: 3px; border-style:dashed;">
+      </div>
+      <p class="fs-5 text-secondary mb-4">
+        Składniki (na ok. 30 sztuk):
+        <ul>
+          <li>3-4 duże jabłka</li>
+          <li>2 jajka</li>
+          <li>200 ml mleka</li>
+          <li>200 g mąki pszennej</li>
+          <li>1 łyżka cukru</li>
+          <li>1 łyżeczka proszku do pieczenia</li>
+          <li>szczypta soli</li>
+          <li>olej do smażenia</li>
+          <li>cukier puder, opcjonalnie cynamon</li>
+        </ul>
+      </p>
+      <div class="w-100 my-3 px-0">
+        <hr class="mx-auto border-dark border-dashed opacity-75" style="width:96%; height: 2px; border-width: 3px; border-style:dashed;">
+      </div>
+      <p class="fs-5 text-secondary mb-4">
+        Przygotowanie:
+         <ol>
+            <li>Obierz jabłka, usuń gniazda nasienne, pokrój w cienkie plasterki lub małe kawałki.</li>
+            <li>W misce ubij jajka z mlekiem i cukrem. Dodaj mąkę, proszek do pieczenia i sól, wymieszaj na gładkie ciasto.</li>
+            <li>Dodaj pokrojone jabłka i delikatnie wymieszaj.</li>
+            <li>Rozgrzej olej na patelni. Nakładaj łyżką porcje – smaż z obu stron na złoty kolor.</li>
+            <li>Odsącz na papierowym ręczniku. Podawaj posypane cukrem pudrem lub z bitą śmietaną.</li>
+          </ol>
+      </p>
+      <div class="w-100 my-3 px-0">
+        <hr class="mx-auto border-dark border-dashed opacity-75" style="width:96%; height: 10px; border-width: 4px;">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Keep Bootstrap JS include at the end of body -->
+<!-- Navigation: previous / main / next (separated alignment) -->
+<br>
+<br>
+<div class="container mb-5">
+  <div class="row align-items-center">
+    <div class="col-12 col-md-4 d-flex justify-content-start mb-2 mb-md-0">
+      <a class="btn btn-link text-decoration-none" href="golabki.html" aria-label="Poprzednia">&laquo; Poprzednia</a>
+    </div>
+    <div class="col-12 col-md-4 d-flex justify-content-center mb-2 mb-md-0">
+      <a class="btn btn-link text-decoration-none fs-4" href="Główna.html" role="button" aria-label="Główna">Główna</a>
+    </div>
+    <div class="col-12 col-md-4 d-flex justify-content-end">
+      <a class="btn btn-link text-decoration-none" href="pierogi.html" aria-label="Następna">Następna &raquo;</a>
+    </div>
+  </div>
+</div>
+<!-- Comments section -->
+<div class="container mb-5">
+  <h3 class="comments-header">Komentarze <small class="text-muted">(0)</small></h3>
+
+
+  <!-- new comment input -->
+  <div class="comment-card mb-3 mx-auto comment-input">
+        <div class="d-flex align-items-start mb-2">
+          <div class="comment-avatar">➕</div>
+          <div class="flex-fill">
+            <div class="comment-box-empty mb-2" contenteditable="true">Napisz komentarz...</div>
+            <div class="d-flex align-items-center">
+              <div class="me-auto">
+                <!-- star controls (clickable) -->
+                <button type="button" data-value="1" class="btn btn-link text-decoration-none star-btn" aria-label="1 gwiazdka">★</button>
+                <button type="button" data-value="2" class="btn btn-link text-decoration-none star-btn" aria-label="2 gwiazdki">★</button>
+                <button type="button" data-value="3" class="btn btn-link text-decoration-none star-btn" aria-label="3 gwiazdki">★</button>
+                <button type="button" data-value="4" class="btn btn-link text-decoration-none star-btn" aria-label="4 gwiazdki">★</button>
+                <button type="button" data-value="5" class="btn btn-link text-decoration-none star-btn" aria-label="5 gwiazdek">★</button>
+              </div>
+              <div>
+                <button class="btn btn-sm btn-dark">wyślij</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- right column intentionally left empty; login prompt moved to end of comments -->
+  </div>
+</div>
+
+  <!-- Login prompt placed after all comments -->
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col d-flex justify-content-end">
+        <div class="login-prompt w-auto text-end">
+          aby umieścić komentarz, <a href="logowanie.html">zaloguj się</a> lub <a href="rejestracja.html">zarejestruj</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="w-100 px-0">
+  <hr class="mx-auto border-dark opacity-100" style="width: 100%; height: 8px; border-width: 4px;">
+</div>
+
+
+<footer class="text-center py-3 mt-4 mb-5">
+  <div class="container px-3 px-md-5">
+    <p class="fs-6 fs-md-5 fw-bolder text-dark mb-0">© 2025 Jak u Babci. Wszelkie prawa zastrzeżone.</p>
+    <p class="fs-6 fw-normal text-dark mb-2 mt-2">Wszystkie przepisy, zdjęcia i treści zamieszczone na stronie są chronione prawem autorskim i stanowią własność Jak u Babci.</p>
+    <p class="fs-6 fw-normal text-dark mb-2">Kopiowanie, rozpowszechnianie oraz wykorzystywanie ich bez pisemnej zgody jest zabronione.</p>
+    <p class="fs-6 fw-bold text-dark mb-0 mt-3">Kontakt: 📧 kontakt@jakubabci.pl</p>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

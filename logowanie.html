@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pl">
+<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Jak u Babci - Przepisy Babci</title>
+        <link rel="icon" href="img/logo.png" type="image/x-icon">
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+		<style>
+			body {
+				background-color: #FCECD1;
+				font-family: 'Merriweather', serif;
+				min-height: 100vh;
+			}
+			.login-container {
+				max-width: 700px;
+				margin: 40px auto;
+				padding: 50px 40px;
+				background-color: #EFD7BC;
+				border-radius: 8px;
+				box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+			}
+			.form-label {
+				font-weight: 700;
+				font-size: 1.3rem;
+				margin-bottom: 10px;
+				color: #2c2c2c;
+			}
+			.form-control {
+				background-color: #D4B59E;
+				border: none;
+				padding: 16px;
+				font-size: 1.1rem;
+				border-radius: 4px;
+			}
+			.form-control:focus {
+				background-color: #C9AA93;
+				box-shadow: none;
+				outline: none;
+			}
+			.btn-login {
+				background-color: #B8885E;
+				color: #000;
+				font-weight: 700;
+				padding: 16px 50px;
+				border: none;
+				border-radius: 4px;
+				font-size: 1.2rem;
+				cursor: pointer;
+				width: 100%;
+			}
+			.btn-login:hover {
+				background-color: #A67A54;
+				color: #000;
+			}
+			.divider {
+				text-align: center;
+				margin: 25px 0;
+				font-weight: 700;
+				font-size: 1.2rem;
+				color: #2c2c2c;
+			}
+			.link-register {
+				color: #2c2c2c;
+				text-decoration: underline;
+				font-weight: 400;
+				font-size: 1.1rem;
+			}
+			.link-register:hover {
+				color: #000;
+			}
+		</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg py-2 py-md-3 shadow-sm mb-4 mb-md-5" style="background-color:  #FCECD1;">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold fs-4 fs-md-3 text-black d-flex align-items-center" href="Główna.html">
+      <img src="img/logo.png" alt="Logo" class="img-fluid d-inline-block align-text-top me-2" style="max-width:150px; height:auto;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav gap-4 align-items-center">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold fs-4 text-black py-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            PRZEPISY
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item fw-bold text-black" href="pierogi.html">1. Pierogi ruskie</a></li>
+            <li><a class="dropdown-item fw-bold text-black" href="zupa.html">2. Zupa pomidorowa</a></li>
+            <li><a class="dropdown-item fw-bold text-black" href="golabki.html">3. Gołąbki</a></li>
+            <li><a class="dropdown-item fw-bold text-black" href="racuchy.html">4. Racuchy</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold fs-4 text-black py-2" href="Główna.html#onas">O NAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold fs-4 text-black py-2" href="Główna.html#kontakt">KONTAKT</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold fs-4 text-black py-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            LOGOWANIE
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item fw-bold text-black" href="logowanie.html">ZALOGUJ SIĘ</a></li>
+            <li><a class="dropdown-item fw-bold text-black" href="rejestracja.html">ZAREJESTRUJ SIĘ</a></li>
+            <li><a class="dropdown-item fw-bold text-black" href="reset.html">RESETOWANIE HASŁA</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-12 col-sm-11 col-md-10 col-lg-8 col-xl-6">
+			<div class="login-container">
+				<form>
+					<div class="mb-4">
+						<label for="loginInput" class="form-label">LOGIN:</label>
+						<input type="text" class="form-control" id="loginInput" placeholder="Marek_Mostowiak">
+					</div>
+					
+					<div class="mb-4">
+						<label for="passwordInput" class="form-label">HASŁO:</label>
+						<input type="password" class="form-control" id="passwordInput" placeholder="************">
+					</div>
+					
+					<div class="mb-4">
+						<a href="reset.html" class="link-register">Przypomnij hasło</a>
+					</div>
+					
+					<div class="d-grid mb-4">
+						<button type="submit" class="btn btn-login">ZALOGUJ</button>
+					</div>
+					
+					<div class="divider">LUB</div>
+					
+					<div class="text-center">
+						<a href="rejestracja.html" class="link-register">ZAREJESTRUJ SIĘ</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="w-100 px-0">
+  <hr class="mx-auto border-dark opacity-100" style="width: 100%; height: 8px; border-width: 4px;">
+</div>
+
+<footer class="text-center py-3 mt-4 mb-5">
+  <div class="container px-3 px-md-5">
+    <p class="fs-6 fs-md-5 fw-bolder text-dark mb-0">© 2025 Jak u Babci. Wszelkie prawa zastrzeżone.</p>
+    <p class="fs-6 fw-normal text-dark mb-2 mt-2">Wszystkie przepisy, zdjęcia i treści zamieszczone na stronie są chronione prawem autorskim i stanowią własność Jak u Babci.</p>
+    <p class="fs-6 fw-normal text-dark mb-2">Kopiowanie, rozpowszechnianie oraz wykorzystywanie ich bez pisemnej zgody jest zabronione.</p>
+    <p class="fs-6 fw-bold text-dark mb-0 mt-3">Kontakt: 📧 kontakt@jakubabci.pl</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
